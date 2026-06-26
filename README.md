@@ -34,15 +34,30 @@ by when you half-remember a game.
 - **Multilingual:** Wikipedia lead-summary extracts in **10 languages** (EN, JA, FR, DE,
   IT, ES, KO, RU, PT, PL) on 3,384 rows, plus native-script titles. (A Chinese-localization
   tracker is also present but only on 6 rows — see the data dictionary.)
-- **30+ upstream sources** reconciled into one row per game (see ATTRIBUTION.md).
+- **30+ upstream sources** reconciled (see ATTRIBUTION.md), **one row per regional release**
+  (PSXDC serial) — so a multi-region title appears as several rows; de-dupe before display (see caveats).
 
 ## How to use it for "find by feel"
 
-The `curated_short_desc` and `tags` columns are designed as the search surface. A typical
-pipeline: embed `curated_short_desc` (optionally concatenated with the flattened `tags`)
-with a sentence-transformer, then rank by cosine similarity to a natural-language query.
-The `tags` JSON also supports structured filtering (e.g. `setting` contains `Cyberpunk`
-**and** `mood` contains `Melancholic`).
+The design is a **hybrid**: embed the prose for *feel*, use the structured columns for
+*filters and ranking* — don't merge the two.
+
+- **Semantic surface — embed `curated_short_desc` only.** It is the highest-value field and
+  carries the "feel" on its own. **Don't concatenate the flattened `tags` into the embedded
+  text:** the vocabulary is dominated by boilerplate (`Single-Player` is on every row,
+  `Save-Point` on ~99%, `Japan-Exclusive` on >half), which pulls every vector toward a common
+  centroid and dilutes the distinctive prose that does the real work. If you do want tags in
+  the vector, first drop the high-frequency ones (standard IDF / stop-word logic) and keep
+  only the discriminative tail.
+- **Structured filtering / re-ranking — `tags` + numeric columns.** The `tags` JSON supports
+  exact filters (e.g. `setting` contains `Cyberpunk` **and** `mood` contains `Melancholic`).
+  Note the *discriminative* discovery/quality tags are deliberately rare (`Cult-Classic` on 66
+  rows, `Mainstream-Hit` on 24) while the structural ones are near-universal — so a "famous vs
+  forgotten" axis is better served by re-ranking on `tags` + `popularity` than by the
+  embedding, which has no way to express "not famous". Year ranges and region are filters too,
+  not vibe — apply them on the typed columns, not in the vector.
+- **Exclude `is_stub=1` from the search index** — the 134 thin stub rows have no rich content
+  (they exist only so the title stays discoverable).
 
 ```
 tags example (JSON object, one list per dimension):
@@ -65,6 +80,20 @@ empty list (`[]`), so structured filters never hit a missing key.
   **left empty when no source supports them** rather than guessed — abstention is a feature.
 - **The 134 stubs** (`is_stub=1`) are intentionally thin (a real title we couldn't match to
   a catalogue page). Filter them out for a "every row is rich" subset.
+- **Rows are per regional release, not per game — de-dupe before display.** Each PSXDC serial
+  is its own row, so a multi-region title appears multiple times (e.g. *Martian Gothic* is 3
+  rows: SLES-01350 / SLES-02998 / SLUS-01148). Roughly 10–20% of non-stub rows are regional
+  siblings of another row. **Do not collapse them by `wikidata_qid` alone:** a single Q-ID
+  often covers a whole series/sequel set — Crash Bandicoot 1 & 3, *Pop'n Music* 1/2/5/6, and
+  the entire *Actua Sports* lineup each share one Q-ID — so naive Q-ID grouping merges
+  *distinct games* into one result. Group only where the Q-ID **and** the base title match (or
+  use serial + title logic), and expose region as a facet. (Q-ID is also only present on ~44%
+  of rows.)
+- **Tags are coarse by design.** The 330-tag vocabulary captures *discovery* dimensions
+  (genre, mood, setting, broad mechanics) — it is **not** a fine-grained mechanic ontology.
+  There is no tag for granular actions like "send letters" or "raise a pet"; that level of
+  intent lives only in `curated_short_desc`, which is exactly why the description is the
+  semantic surface.
 - **Japan bias is deliberate**, not a sampling error — it's the point of the project.
 - **Third-party editorial prose is not included.** Long-form reviews/articles from sources
   like Hardcore Gaming 101, GameFAQs-style writeups, TVTropes, etc. are **not redistributed**;
@@ -74,8 +103,9 @@ empty list (`[]`), so structured filters never hit a missing key.
 ## How it was built (high level)
 
 Each source was ingested into its own table, cross-linked to a PlayStation serial (or a
-language-agnostic Wikidata Q-ID), then merged non-destructively into one flat row per game
-(sources never overwrite each other; disagreements are kept side-by-side). On top of that
+language-agnostic Wikidata Q-ID), then merged non-destructively into one flat row per
+catalogue entry — one row per PSXDC serial, so a game released in several regions appears as
+several rows (sources never overwrite each other; disagreements are kept side-by-side). On top of that
 factual base, an editorial pass wrote the tags and short descriptions **from each game's own
 evidence** (never from model memory), with an adversarial verification step removing
 unsupported claims. Full method and architecture are summarized in ATTRIBUTION.md.

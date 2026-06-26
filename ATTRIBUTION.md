@@ -1,6 +1,7 @@
 # Attribution & Sources
 
-The PS1 Discovery Corpus reconciles **30+ upstream sources** into one row per game. This
+The PS1 Discovery Corpus reconciles **30+ upstream sources** into one row per regional
+release (PSXDC serial; a multi-region title is several rows). This
 file is the attribution backbone required by the dataset's CC BY-SA 4.0 license. The guiding
 principle of the release:
 

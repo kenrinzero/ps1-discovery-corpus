@@ -18,7 +18,7 @@
 | 11 | `psx_datacenter_link` | string | 7,995 (100%) | various | Fact |  |
 | 12 | `wikipedia_url` | url | 2,590 (32%) | wikipedia | Fact | Link to the wikipedia page (pointer / attribution). |
 | 13 | `jpwiki_url` | url | 1,091 (14%) | jpwiki | Fact | Link to the jpwiki page (pointer / attribution). |
-| 14 | `wikidata_qid` | string | 3,461 (43%) | Wikidata | Wikidata · CC0 | Wikidata entity id (language-agnostic identity key, e.g. Q123456). |
+| 14 | `wikidata_qid` | string | 3,461 (43%) | Wikidata | Wikidata · CC0 | Wikidata entity id (e.g. Q123456). Language-agnostic, but **not unique per row and not a safe dedup key on its own** — one Q-ID often covers a whole series/sequel set, so grouping by it alone merges distinct games. To collapse regional editions, match on Q-ID **and** base title. |
 | 15 | `mobygames_url` | url | 3,593 (45%) | mobygames | Fact | Link to the mobygames page (pointer / attribution). |
 | 16 | `mobygames_score` | float | 2,259 (28%) | MobyGames | Fact | MobyScore (0–10). |
 | 17 | `mobygames_genres` | string | 3,450 (43%) | MobyGames | Fact | Genre labels, comma-list. |
@@ -94,42 +94,42 @@
 | 87 | `vndb_developers` | string | 208 (3%) | VNDB | Fact | VN developers, comma-list. |
 | 88 | `gcmatome_url` | url | 580 (7%) | gcmatome | Fact | Link to the gcmatome page (pointer / attribution). |
 | 89 | `gcmatome_verdict` | string | 579 (7%) | gcmatome (JA) | Fact | Japanese community quality verdict (良作 / クソゲー / スルメゲー …) — a search facet. |
-| 90 | `frwiki_url` | url | 2,113 (26%) | French Wikipedia | Fact | French Wikipedia article URL. |
-| 91 | `frwiki_title` | string | 2,113 (26%) | French Wikipedia | Wikipedia · CC BY-SA | French Wikipedia article title. |
-| 92 | `frwiki_extract` | string | 2,094 (26%) | French Wikipedia | Wikipedia · CC BY-SA | French Wikipedia lead-summary extract. |
-| 93 | `frwiki_categories` | string | 2,064 (26%) | French Wikipedia | Wikipedia · CC BY-SA | French Wikipedia categories, comma-list. |
+| 90 | `frwiki_url` | url | 2,030 (25%) | French Wikipedia | Fact | French Wikipedia article URL. |
+| 91 | `frwiki_title` | string | 2,030 (25%) | French Wikipedia | Wikipedia · CC BY-SA | French Wikipedia article title. |
+| 92 | `frwiki_extract` | string | 2,011 (25%) | French Wikipedia | Wikipedia · CC BY-SA | French Wikipedia lead-summary extract. |
+| 93 | `frwiki_categories` | string | 1,983 (25%) | French Wikipedia | Wikipedia · CC BY-SA | French Wikipedia categories, comma-list. |
 | 94 | `grospixels_url` | url | 147 (2%) | grospixels | Fact | Link to the grospixels page (pointer / attribution). |
 | 95 | `grospixels_title` | string | 147 (2%) | Grospixels | Fact | Article title. |
 | 96 | `grospixels_author` | string | 147 (2%) | Grospixels | Fact | Article author (attribution). |
 | 97 | `grospixels_year` | integer | 147 (2%) | Grospixels | Fact | Article year. |
-| 98 | `dewiki_url` | url | 885 (11%) | German Wikipedia | Fact | German Wikipedia article URL. |
-| 99 | `dewiki_title` | string | 885 (11%) | German Wikipedia | Wikipedia · CC BY-SA | German Wikipedia article title. |
-| 100 | `dewiki_extract` | string | 885 (11%) | German Wikipedia | Wikipedia · CC BY-SA | German Wikipedia lead-summary extract. |
-| 101 | `dewiki_categories` | string | 885 (11%) | German Wikipedia | Wikipedia · CC BY-SA | German Wikipedia categories, comma-list. |
-| 102 | `itwiki_url` | url | 1,744 (22%) | Italian Wikipedia | Fact | Italian Wikipedia article URL. |
-| 103 | `itwiki_title` | string | 1,744 (22%) | Italian Wikipedia | Wikipedia · CC BY-SA | Italian Wikipedia article title. |
-| 104 | `itwiki_extract` | string | 1,679 (21%) | Italian Wikipedia | Wikipedia · CC BY-SA | Italian Wikipedia lead-summary extract. |
-| 105 | `itwiki_categories` | string | 1,744 (22%) | Italian Wikipedia | Wikipedia · CC BY-SA | Italian Wikipedia categories, comma-list. |
-| 106 | `eswiki_url` | url | 1,570 (20%) | Spanish Wikipedia | Fact | Spanish Wikipedia article URL. |
-| 107 | `eswiki_title` | string | 1,570 (20%) | Spanish Wikipedia | Wikipedia · CC BY-SA | Spanish Wikipedia article title. |
-| 108 | `eswiki_extract` | string | 1,568 (20%) | Spanish Wikipedia | Wikipedia · CC BY-SA | Spanish Wikipedia lead-summary extract. |
-| 109 | `eswiki_categories` | string | 1,570 (20%) | Spanish Wikipedia | Wikipedia · CC BY-SA | Spanish Wikipedia categories, comma-list. |
-| 110 | `kowiki_url` | url | 943 (12%) | Korean Wikipedia | Fact | Korean Wikipedia article URL. |
-| 111 | `kowiki_title` | string | 943 (12%) | Korean Wikipedia | Wikipedia · CC BY-SA | Korean Wikipedia article title. |
-| 112 | `kowiki_extract` | string | 941 (12%) | Korean Wikipedia | Wikipedia · CC BY-SA | Korean Wikipedia lead-summary extract. |
-| 113 | `kowiki_categories` | string | 943 (12%) | Korean Wikipedia | Wikipedia · CC BY-SA | Korean Wikipedia categories, comma-list. |
-| 114 | `ruwiki_url` | url | 1,252 (16%) | Russian Wikipedia | Fact | Russian Wikipedia article URL. |
-| 115 | `ruwiki_title` | string | 1,252 (16%) | Russian Wikipedia | Wikipedia · CC BY-SA | Russian Wikipedia article title. |
-| 116 | `ruwiki_extract` | string | 1,252 (16%) | Russian Wikipedia | Wikipedia · CC BY-SA | Russian Wikipedia lead-summary extract. |
-| 117 | `ruwiki_categories` | string | 1,252 (16%) | Russian Wikipedia | Wikipedia · CC BY-SA | Russian Wikipedia categories, comma-list. |
-| 118 | `ptwiki_url` | url | 1,113 (14%) | Portuguese Wikipedia | Fact | Portuguese Wikipedia article URL. |
-| 119 | `ptwiki_title` | string | 1,113 (14%) | Portuguese Wikipedia | Wikipedia · CC BY-SA | Portuguese Wikipedia article title. |
-| 120 | `ptwiki_extract` | string | 1,110 (14%) | Portuguese Wikipedia | Wikipedia · CC BY-SA | Portuguese Wikipedia lead-summary extract. |
-| 121 | `ptwiki_categories` | string | 1,113 (14%) | Portuguese Wikipedia | Wikipedia · CC BY-SA | Portuguese Wikipedia categories, comma-list. |
-| 122 | `plwiki_url` | url | 757 (9%) | Polish Wikipedia | Fact | Polish Wikipedia article URL. |
-| 123 | `plwiki_title` | string | 757 (9%) | Polish Wikipedia | Wikipedia · CC BY-SA | Polish Wikipedia article title. |
-| 124 | `plwiki_extract` | string | 751 (9%) | Polish Wikipedia | Wikipedia · CC BY-SA | Polish Wikipedia lead-summary extract. |
-| 125 | `plwiki_categories` | string | 757 (9%) | Polish Wikipedia | Wikipedia · CC BY-SA | Polish Wikipedia categories, comma-list. |
+| 98 | `dewiki_url` | url | 852 (11%) | German Wikipedia | Fact | German Wikipedia article URL. |
+| 99 | `dewiki_title` | string | 852 (11%) | German Wikipedia | Wikipedia · CC BY-SA | German Wikipedia article title. |
+| 100 | `dewiki_extract` | string | 852 (11%) | German Wikipedia | Wikipedia · CC BY-SA | German Wikipedia lead-summary extract. |
+| 101 | `dewiki_categories` | string | 852 (11%) | German Wikipedia | Wikipedia · CC BY-SA | German Wikipedia categories, comma-list. |
+| 102 | `itwiki_url` | url | 1,681 (21%) | Italian Wikipedia | Fact | Italian Wikipedia article URL. |
+| 103 | `itwiki_title` | string | 1,681 (21%) | Italian Wikipedia | Wikipedia · CC BY-SA | Italian Wikipedia article title. |
+| 104 | `itwiki_extract` | string | 1,625 (20%) | Italian Wikipedia | Wikipedia · CC BY-SA | Italian Wikipedia lead-summary extract. |
+| 105 | `itwiki_categories` | string | 1,681 (21%) | Italian Wikipedia | Wikipedia · CC BY-SA | Italian Wikipedia categories, comma-list. |
+| 106 | `eswiki_url` | url | 1,520 (19%) | Spanish Wikipedia | Fact | Spanish Wikipedia article URL. |
+| 107 | `eswiki_title` | string | 1,520 (19%) | Spanish Wikipedia | Wikipedia · CC BY-SA | Spanish Wikipedia article title. |
+| 108 | `eswiki_extract` | string | 1,518 (19%) | Spanish Wikipedia | Wikipedia · CC BY-SA | Spanish Wikipedia lead-summary extract. |
+| 109 | `eswiki_categories` | string | 1,520 (19%) | Spanish Wikipedia | Wikipedia · CC BY-SA | Spanish Wikipedia categories, comma-list. |
+| 110 | `kowiki_url` | url | 899 (11%) | Korean Wikipedia | Fact | Korean Wikipedia article URL. |
+| 111 | `kowiki_title` | string | 899 (11%) | Korean Wikipedia | Wikipedia · CC BY-SA | Korean Wikipedia article title. |
+| 112 | `kowiki_extract` | string | 897 (11%) | Korean Wikipedia | Wikipedia · CC BY-SA | Korean Wikipedia lead-summary extract. |
+| 113 | `kowiki_categories` | string | 899 (11%) | Korean Wikipedia | Wikipedia · CC BY-SA | Korean Wikipedia categories, comma-list. |
+| 114 | `ruwiki_url` | url | 1,208 (15%) | Russian Wikipedia | Fact | Russian Wikipedia article URL. |
+| 115 | `ruwiki_title` | string | 1,208 (15%) | Russian Wikipedia | Wikipedia · CC BY-SA | Russian Wikipedia article title. |
+| 116 | `ruwiki_extract` | string | 1,208 (15%) | Russian Wikipedia | Wikipedia · CC BY-SA | Russian Wikipedia lead-summary extract. |
+| 117 | `ruwiki_categories` | string | 1,208 (15%) | Russian Wikipedia | Wikipedia · CC BY-SA | Russian Wikipedia categories, comma-list. |
+| 118 | `ptwiki_url` | url | 1,073 (13%) | Portuguese Wikipedia | Fact | Portuguese Wikipedia article URL. |
+| 119 | `ptwiki_title` | string | 1,073 (13%) | Portuguese Wikipedia | Wikipedia · CC BY-SA | Portuguese Wikipedia article title. |
+| 120 | `ptwiki_extract` | string | 1,070 (13%) | Portuguese Wikipedia | Wikipedia · CC BY-SA | Portuguese Wikipedia lead-summary extract. |
+| 121 | `ptwiki_categories` | string | 1,073 (13%) | Portuguese Wikipedia | Wikipedia · CC BY-SA | Portuguese Wikipedia categories, comma-list. |
+| 122 | `plwiki_url` | url | 741 (9%) | Polish Wikipedia | Fact | Polish Wikipedia article URL. |
+| 123 | `plwiki_title` | string | 741 (9%) | Polish Wikipedia | Wikipedia · CC BY-SA | Polish Wikipedia article title. |
+| 124 | `plwiki_extract` | string | 735 (9%) | Polish Wikipedia | Wikipedia · CC BY-SA | Polish Wikipedia lead-summary extract. |
+| 125 | `plwiki_categories` | string | 741 (9%) | Polish Wikipedia | Wikipedia · CC BY-SA | Polish Wikipedia categories, comma-list. |
 | 126 | `sources` | string | 7,995 (100%) | this project | Fact | Provenance: comma-list of which sources contributed to this row. |
 
 ## Sparsest columns (<1% coverage — treat as anecdotal)
