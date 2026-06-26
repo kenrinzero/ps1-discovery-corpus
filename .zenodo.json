@@ -1,0 +1,28 @@
+{
+  "title": "PS1 Discovery Corpus",
+  "upload_type": "dataset",
+  "access_right": "open",
+  "description": "A multilingual metadata corpus of 7,995 PlayStation 1 games, built to be searched <em>by feel</em> (e.g. \"a cozy fishing game with an anime aesthetic\") rather than by popularity or rigid filters, with a deliberate bias toward obscure and Japan-exclusive titles. Every row carries an original, evidence-grounded short description and a set of controlled-vocabulary tags (mood, setting, mechanics, cultural lineage, quality) on top of facts reconciled from 30+ sources across 11 languages. 7,995 rows &#215; 127 columns, CSV + Parquet, released under CC BY-SA 4.0. Canonical source and full documentation: https://github.com/kenrinzero/ps1-discovery-corpus",
+  "creators": [
+    { "name": "kenrinzero" }
+  ],
+  "keywords": [
+    "PlayStation",
+    "PlayStation 1",
+    "PSX",
+    "video games",
+    "game metadata",
+    "semantic search",
+    "multilingual",
+    "Japan-exclusive games",
+    "retro gaming",
+    "dataset"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/kenrinzero/ps1-discovery-corpus",
+      "scheme": "url"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # PS1 Discovery Corpus
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20943284.svg)](https://doi.org/10.5281/zenodo.20943284)
+
 A multilingual metadata corpus of **7,995 PlayStation 1 games**, built to be searched
 **by feel** — *"a 1996/97 Japanese game where you could send letters"*, *"a cozy
 fishing game with an anime aesthetic"*, *"a bleak sci-fi adventure nobody remembers"* —
