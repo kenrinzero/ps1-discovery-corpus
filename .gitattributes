@@ -1,0 +1,10 @@
+# Data artifacts: store byte-exact, no end-of-line conversion (preserves
+# embedded newlines inside quoted CSV fields and keeps hashes stable cross-platform).
+ps1_corpus.csv     -text
+ps1_corpus.parquet -text binary
+tag_vocabulary.json -text
+
+# Documentation: normalize to LF.
+*.md     text eol=lf
+LICENSE  text eol=lf
+NOTICE   text eol=lf

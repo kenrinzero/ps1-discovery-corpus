@@ -1,0 +1,46 @@
+PS1 Discovery Corpus — NOTICE
+=============================
+
+This dataset is licensed as a whole under CC BY-SA 4.0 (see LICENSE). It
+aggregates material under several upstream terms, summarized here. ATTRIBUTION.md
+holds the full per-source table; this NOTICE is the binding attribution backbone.
+
+Components and their terms
+--------------------------
+1. Original editorial — `curated_short_desc`, `tags`, `is_stub`:
+   © the PS1 Discovery Corpus project, licensed CC BY-SA 4.0. Written from each
+   game's own evidence; not copied from any source.
+
+2. Wikipedia content — `*wiki_extract`, `*wiki_title`, `*wiki_categories`,
+   `wiki_infobox_*` (10 languages: EN, JA, FR, DE, IT, ES, KO, RU, PT, PL):
+   © Wikipedia contributors, licensed CC BY-SA (Attribution-ShareAlike).
+   Attribution: "Wikipedia, the free encyclopedia, and its contributors."
+
+3. Wikidata — `wikidata_qid`: CC0 1.0 (public domain dedication). CC0 material is
+   compatible with inclusion in this CC BY-SA aggregate.
+
+4. Facts — titles, serials, dates, developers/publishers, specs, numeric
+   ratings/prices/playtimes/counts, genre/theme labels: facts are not subject to
+   copyright. They are corroborated across many databases (see ATTRIBUTION.md) and
+   are reproduced as facts; no upstream Terms of Service is asserted to be waived.
+
+5. Outbound links — every `*_url` column: a link is a fact and also serves as
+   attribution to the linked source.
+
+Explicitly EXCLUDED (not in this dataset)
+-----------------------------------------
+- Third-party editorial PROSE bodies (e.g. Hardcore Gaming 101 articles, GiantBomb
+  decks/descriptions, gcmatome/refuge.tokyo/Bahamut/Grospixels writeups, PSXDC and
+  LaunchBox blurbs). Kept only as their `*_url` pointer.
+- TVTropes text (CC BY-NC-SA, non-commercial) — only `tvtropes_url` +
+  `tvtropes_trope_count` remain.
+- VNDB *descriptions* — editorial prose under "separate license conditions",
+  dropped. (VNDB's open data — database ODbL, contents DbCL, commercial use
+  permitted — IS included: `vndb_tags` labels + numeric/title facts. Only VNDB's
+  AniDB-sourced *anime* data is CC BY-NC-SA, and it is not used here.)
+
+Required attribution for downstream use
+---------------------------------------
+Credit "PS1 Discovery Corpus" AND Wikipedia/Wikipedia contributors (for any rows
+using `*wiki_extract`/`*wiki_*`), link to the CC BY-SA 4.0 license, indicate
+changes, and license derivatives under CC BY-SA 4.0.
