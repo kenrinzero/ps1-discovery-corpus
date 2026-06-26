@@ -92,6 +92,14 @@ copyrightable), (2) **our own editorial** (`curated_short_desc`, `tags`), (3) **
 lead extracts** (CC BY-SA, attributed), and (4) **Wikidata** identifiers (CC0). Copyrighted
 third-party prose and non-commercial (TVTropes) text are **not** included — only links to them.
 
+## Acknowledgments
+
+This corpus was compiled, cross-linked, and editorially processed with substantial assistance
+from **Claude Opus 4.8** (Anthropic) — used for source reconciliation, the controlled-vocabulary
+tagging and short-description passes (each adversarially verified against each game's own
+evidence), data-quality auditing, and packaging this release. The dataset's design, direction,
+and final review are the maintainer's.
+
 ## Disclaimer
 
 Community research dataset. Not affiliated with or endorsed by Sony Interactive Entertainment
