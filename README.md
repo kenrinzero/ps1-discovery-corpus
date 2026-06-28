@@ -1,6 +1,6 @@
 # PS1 Discovery Corpus
 
-[![Dataset on Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/kenrinzero/ps1-discovery-corpus) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20943284.svg)](https://doi.org/10.5281/zenodo.20943284)
+[![Dataset on Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/kenrinzero/ps1-discovery-corpus) [![Dataset on Kaggle](https://img.shields.io/badge/Kaggle-Dataset-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/poludnitsa/ps1-discovery-corpus) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20943284.svg)](https://doi.org/10.5281/zenodo.20943284)
 
 A multilingual metadata corpus of **7,995 PlayStation 1 games**, built to be searched
 **by feel** — *"a 1996/97 Japanese game where you could send letters"*, *"a cozy
