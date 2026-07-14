@@ -1,6 +1,6 @@
 # PS1 Discovery Corpus
 
-[![Browse & search live](https://img.shields.io/badge/Browse%20%26%20search-live%20site-4f46e5)](https://ps1-discovery.pages.dev) [![Dataset on Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/kenrinzero/ps1-discovery-corpus) [![Dataset on Kaggle](https://img.shields.io/badge/Kaggle-Dataset-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/poludnitsa/ps1-discovery-corpus) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20943284.svg)](https://doi.org/10.5281/zenodo.20943284)
+[![Browse & search live](https://img.shields.io/badge/Browse%20%26%20search-live%20site-4f46e5)](https://ps1-discovery.pages.dev) [![Dataset on Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/kenrinzero/ps1-discovery-corpus) [![Dataset on Kaggle](https://img.shields.io/badge/Kaggle-Dataset-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/poludnitsa/ps1-discovery-corpus) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20943284.svg)](https://doi.org/10.5281/zenodo.20943284) [![Interactive atlas](https://img.shields.io/badge/Interactive-atlas-e8b04b)](https://claude.ai/code/artifact/7207f50b-470a-4bee-a881-de39ce417f89)
 
 A multilingual metadata corpus of **7,995 PlayStation 1 games**, built to be searched
 **by feel** — *"a 1996/97 Japanese game where you could send letters"*, *"a cozy
@@ -11,6 +11,12 @@ and Japan-exclusive titles**: the long tail most databases skip.
 > **🔎 Try it live: [ps1-discovery.pages.dev](https://ps1-discovery.pages.dev)** — a browse +
 > in-browser semantic-search frontend built directly on this corpus. Describe a half-remembered
 > game in your own words and the closest matches come back; all search runs client-side.
+
+> **📊 Or see its shape: [interactive atlas](https://claude.ai/code/artifact/7207f50b-470a-4bee-a881-de39ce417f89)** —
+> a visual tour of the corpus: the release timeline, region and obscurity breakdowns, the
+> 10-dimension vibe-tag vocabulary, and a filter-by-feel deck over all 7,861 games — with an
+> *obscurity dial* that winds the library down to the ~2,400 titles documented nowhere else.
+> Self-contained, runs offline; built by Claude (Opus 4.8).
 
 The dataset's value is its **editorial layer**: every row carries an original,
 evidence-grounded short description and a set of controlled-vocabulary tags spanning
